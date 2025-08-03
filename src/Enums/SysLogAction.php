@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Siushin\LaravelTool\Enums;
 
 /**
- * 动作类型（日志）
+ * 枚举：动作类型（日志）
  */
 enum SysLogAction: string
 {

@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Siushin\LaravelTool\Enums;
 
+/**
+ * 枚举：用户类型
+ */
 enum SysUserType: string
 {
     case admin = '管理员';     // 管理后台登录用户
