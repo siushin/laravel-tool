@@ -1,0 +1,33 @@
+{
+    "name": "siushin/laravel-tool",
+    "description": "基于 Laravel 的工具类、助手函数等",
+    "type": "library",
+    "keywords": [
+        "php",
+        "laravel",
+        "tool",
+        "helper"
+    ],
+    "require": {
+        "php": "^8.3",
+        "siushin/util": "^1.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Siushin\\LaravelTool\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "siushin",
+            "email": "siushin@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": []
+    }
+}
