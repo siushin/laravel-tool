@@ -1,0 +1,59 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * 助手函数：Response响应（基于Laravel）
+ */
+
+use Illuminate\Http\JsonResponse;
+
+/**
+ * HTTP 响应成功
+ * @param array  $data
+ * @param string $message
+ * @param int    $code
+ * @return JsonResponse
+ */
+function success(array $data = [], string $message = 'success', int $code = 0): JsonResponse
+{
+    $data = compact('code', 'message', 'data');
+    return response()->json($data);
+}
+
+/**
+ * 抛出HTTP异常
+ * @param string   $message
+ * @param int|null $error_code
+ * @param int|null $code
+ * @return Exception
+ * @throws Exception
+ */
+function throw_exception(string $message = 'fail', int $error_code = null, int $code = null): Exception
+{
+    $is_json_data = json_decode($message, true);
+    $message = $is_json_data['message'] ?? $message;
+    $error_code && $message .= "，错误码：$error_code";
+    $status_code = $code = $code ?: 401;
+    $data = json_encode(compact('code', 'message'), JSON_UNESCAPED_UNICODE);
+    throw new Exception($data, $status_code);
+}
+
+/**
+ * 构造分页数据
+ * @param mixed $data
+ * @return array
+ */
+function buildPageData(mixed $data): array
+{
+    gettype($data) == 'object' && $data = $data->toArray();
+    return [
+        'data' => $data['data'] ?? [],
+        'page' => [
+            'currentPage' => $data['current_page'] ?? 1,    // 当前页数
+            'currentCount' => $data['to'] ?: 0,             // 当前记录数
+            'perPage' => (int)($data['per_page'] ?? 10),    // 每页记录数
+            'lastPage' => $data['last_page'] ?? 1,          // 总页数（最后页数）
+            'total' => $data['total'] ?? 0,                 // 总记录数
+        ],
+    ];
+}

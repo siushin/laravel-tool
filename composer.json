@@ -10,6 +10,8 @@
     ],
     "require": {
         "php": "^8.3",
+        "laravel/laravel": "^12.0",
+        "phpoffice/phpspreadsheet": "^4.5",
         "siushin/util": "^1.0"
     },
     "license": "MIT",
@@ -21,13 +23,18 @@
     "authors": [
         {
             "name": "siushin",
-            "email": "siushin@163.com"
+            "email": "siushin@163.com",
+            "homepage": "http://www.siushin.com"
         }
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "post-install-cmd": [],
-        "post-update-cmd": []
+        "post-install-cmd": [
+            "Siushin\\LaravelTool\\Installer::postInstall"
+        ],
+        "post-update-cmd": [
+            "Siushin\\LaravelTool\\Installer::postInstall"
+        ]
     }
 }
