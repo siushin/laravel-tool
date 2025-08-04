@@ -18,7 +18,12 @@
     "autoload": {
         "psr-4": {
             "Siushin\\LaravelTool\\": "src/"
-        }
+        },
+        "files": [
+            "src/Funcs/LaraDateTime.php",
+            "src/Funcs/LaraRequest.php",
+            "src/Funcs/LaraResponse.php"
+        ]
     },
     "authors": [
         {
