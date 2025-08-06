@@ -1,10 +1,9 @@
 <?php
-declare(strict_types=1);
 
 namespace Siushin\LaravelTool\Traits;
 
 /**
- * Excel工具
+ * 工具类：Excel工具
  */
 trait ExcelTool
 {
@@ -12,8 +11,9 @@ trait ExcelTool
      * 列号 转换为 Excel 列名
      * @param int $columnNumber 列号，将数字转换为Excel列名，比如传入：1，则返回：A
      * @return string
+     * @author siushin<siushin@163.com>
      */
-    static function numberToExcelColumn(int $columnNumber): string
+    public static function numberToExcelColumn(int $columnNumber): string
     {
         $columnName = '';
         while ($columnNumber > 0) {
@@ -29,8 +29,9 @@ trait ExcelTool
      * 生成指定数量的列名
      * @param int $totalColumns 列数，根据列数生成列名，比如传入：3，则返回数组 ['A', 'B', 'C']
      * @return array
+     * @author siushin<siushin@163.com>
      */
-    static function generateExcelColumnNames(int $totalColumns): array
+    public static function generateExcelColumnNames(int $totalColumns): array
     {
         $columnNames = [];
         for ($i = 1; $i <= $totalColumns; $i++) {
@@ -43,8 +44,9 @@ trait ExcelTool
      * Excel列名 转换为 列号
      * @param string $columnName
      * @return int
+     * @author siushin<siushin@163.com>
      */
-    static function getExcelColumnIndex(string $columnName): int
+    public static function getExcelColumnIndex(string $columnName): int
     {
         $index = 0;
         $length = strlen($columnName);

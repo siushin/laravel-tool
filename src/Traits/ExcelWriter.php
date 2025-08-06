@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Siushin\LaravelTool\Traits;
 
@@ -11,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 /**
- * Excel写入
+ * 工具类：Excel写入
  */
 trait ExcelWriter
 {
@@ -22,9 +21,10 @@ trait ExcelWriter
      * @param array  $headers
      * @param array  $data
      * @param string $fileName
-     * @param array  $extend_data
-     * @return array
+     * @param array  $extend_data 支持参数：save_path（保存路径，默认：/storage/app/excel/）、cell_color_list、column_center_list、column_auto_size_list、column_bg_color_list、freeze_pane_list
+     * @return array                文件名、文件路径
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     public static function writerExcel(array $headers, array $data, string $fileName, array $extend_data = []): array
     {
@@ -129,6 +129,6 @@ trait ExcelWriter
             throw_exception($e->getMessage());
         }
 
-        return compact('file_path');
+        return compact('fileName', 'file_path');
     }
 }

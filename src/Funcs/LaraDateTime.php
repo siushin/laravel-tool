@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * 助手函数：日期时间（基于Laravel）
@@ -11,6 +10,7 @@ use Illuminate\Support\Carbon;
  * 获取本地化日期时间
  * @param $datetime
  * @return string
+ * @author siushin<siushin@163.com>
  */
 function getLocaleDateTime($datetime): string
 {
@@ -21,6 +21,7 @@ function getLocaleDateTime($datetime): string
  * 获取日期时间（根据时间戳）
  * @param $timestamp
  * @return string
+ * @author siushin<siushin@163.com>
  */
 function getDateTimeByTimestamp($timestamp): string
 {

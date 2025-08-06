@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Siushin\LaravelTool\Traits;
 
@@ -10,7 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 /**
- * 工具类：模型
+ * 工具类：模型常用方法
  * @method Builder query()
  * @method getTable()
  */
@@ -22,6 +21,7 @@ trait ModelTool
      * 访问器（将日期时间字段转换为本地时区）
      * @param $value
      * @return string
+     * @author siushin<siushin@163.com>
      */
     public function getCreatedAtAttribute($value): string
     {
@@ -32,6 +32,7 @@ trait ModelTool
      * 访问器（将日期时间字段转换为本地时区）
      * @param $value
      * @return string
+     * @author siushin<siushin@163.com>
      */
     public function getUpdatedAtAttribute($value): string
     {
@@ -44,6 +45,7 @@ trait ModelTool
      * @param string $pk
      * @return void
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     public static function checkIsExistByPk(array $params, string $pk): void
     {
@@ -55,6 +57,7 @@ trait ModelTool
     /**
      * 获取表的所有字段清单
      * @return array
+     * @author siushin<siushin@163.com>
      */
     public static function getTableFields(): array
     {
@@ -66,6 +69,7 @@ trait ModelTool
      * @param array $params
      * @return array
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     public static function buildQueryReqOfPageData(array $params = []): array
     {
@@ -96,6 +100,7 @@ trait ModelTool
      * @param array $where
      * @return array
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     public static function buildWhereData(array $params, array $where_mapping, array $where = []): array
     {
@@ -134,6 +139,7 @@ trait ModelTool
      * @param array        $where
      * @return mixed
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     public static function baseFastParamHandle(mixed $model, array $params, array $where_mapping = [], array|string $fields = '*', array $where = []): mixed
     {
@@ -180,6 +186,7 @@ trait ModelTool
      * @param array        $where
      * @return array
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     protected static function fastGetPageData(mixed $model, array $params, array $where_mapping = [], array|string $fields = ['*'], array $where = []): array
     {
@@ -202,6 +209,7 @@ trait ModelTool
      * @param array        $where
      * @return array
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     protected static function fastGetAllData(mixed $model, array $params, array $where_mapping = [], array|string $fields = ['*'], array $where = []): array
     {
@@ -219,6 +227,7 @@ trait ModelTool
      * @param array        $where
      * @return int
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
     public static function fastGetTotal(mixed $model, array $params, array $where_mapping = [], array|string $fields = ['*'], array $where = []): int
     {
@@ -230,6 +239,7 @@ trait ModelTool
      * 构造完整行政区划数据
      * @param array $region_list
      * @return int[]|null[]
+     * @author siushin<siushin@163.com>
      */
     public static function buildFullRegionData(array $region_list): array
     {
@@ -245,6 +255,7 @@ trait ModelTool
      * @param array $region_list
      * @param array $where
      * @return array
+     * @author siushin<siushin@163.com>
      */
     public static function buildRegionWhereData(array $region_list, array $where = []): array
     {
@@ -260,6 +271,7 @@ trait ModelTool
      * 为行政区划数据设默认值（不存在也会追加）
      * @param array $params
      * @return void
+     * @author siushin<siushin@163.com>
      */
     public static function handleDefaultValueRegionData(array &$params): void
     {
@@ -274,6 +286,7 @@ trait ModelTool
      * @param int    $id
      * @param string $field
      * @return string
+     * @author siushin<siushin@163.com>
      */
     protected static function notFoundDataMsg(int $id, string $field = 'ID'): string
     {

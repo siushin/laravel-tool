@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * 助手函数：Response响应（基于Laravel）
@@ -13,6 +12,7 @@ use Illuminate\Http\JsonResponse;
  * @param string $message
  * @param int    $code
  * @return JsonResponse
+ * @author siushin<siushin@163.com>
  */
 function success(array $data = [], string $message = 'success', int $code = 0): JsonResponse
 {
@@ -27,6 +27,7 @@ function success(array $data = [], string $message = 'success', int $code = 0): 
  * @param int|null $code
  * @return Exception
  * @throws Exception
+ * @author siushin<siushin@163.com>
  */
 function throw_exception(string $message = 'fail', int $error_code = null, int $code = null): Exception
 {
@@ -42,6 +43,7 @@ function throw_exception(string $message = 'fail', int $error_code = null, int $
  * 构造分页数据
  * @param mixed $data
  * @return array
+ * @author siushin<siushin@163.com>
  */
 function buildPageData(mixed $data): array
 {

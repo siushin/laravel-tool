@@ -17,8 +17,9 @@ trait LaraParamTool
      * 集合数据递归转数组
      * @param mixed $collection
      * @return array
+     * @author siushin<siushin@163.com>
      */
-    protected static function collectRecursiveToArray(mixed $collection): array
+    public static function collectRecursiveToArray(mixed $collection): array
     {
         if ($collection instanceof Collection) {
             return $collection->map(function ($item) {

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Siushin\LaravelTool\Traits;
 
@@ -7,7 +6,7 @@ use Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 /**
- * Excel读取
+ * 工具类：Excel读取
  */
 trait ExcelReader
 {
@@ -25,8 +24,9 @@ trait ExcelReader
      * @param int        $endRow           结束行数，默认为-1，表示读取所有行
      * @return array
      * @throws Exception
+     * @author siushin<siushin@163.com>
      */
-    static function getExcelRowData(string $inputFileName, array $columnMap, mixed $callbackIterator = null, int $startRow = 2, int $endRow = -1): array
+    public static function getExcelRowData(string $inputFileName, array $columnMap, mixed $callbackIterator = null, int $startRow = 2, int $endRow = -1): array
     {
         ini_set('memory_limit', '1024M');
 

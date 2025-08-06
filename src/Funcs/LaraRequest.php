@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * 助手函数：Request请求（基于Laravel）
@@ -9,6 +8,7 @@ declare(strict_types=1);
  * 获取当前登录用户ID
  * @param int $defaultUserId
  * @return int
+ * @author siushin<siushin@163.com>
  */
 function currentUserId(int $defaultUserId = 0): int
 {
@@ -22,6 +22,7 @@ function currentUserId(int $defaultUserId = 0): int
  * @param string $file_name    文件名（支持带目录路径）
  * @param bool   $is_full_path 是否响应完整路径，默认响应相对路径
  * @return string
+ * @author siushin<siushin@163.com>
  */
 function buildFilePath(string $dir_path, string $file_name, bool $is_full_path = true): string
 {

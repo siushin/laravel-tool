@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Siushin\LaravelTool\Utils;
 
 /**
- * 工具类：树形结构
+ * 工具类：生成Tree树结构
  */
 class Tree
 {
@@ -27,6 +27,7 @@ class Tree
      * @param int   $pid
      * @param int   $level
      * @return array
+     * @author siushin<siushin@163.com>
      */
     public function getTree(array $array, int $pid = 0, int $level = 0): array
     {
@@ -47,6 +48,7 @@ class Tree
      * @param int   $parentId    当前父节点ID
      * @param int   $level       当前层级
      * @return array
+     * @author siushin<siushin@163.com>
      */
     private function buildTree(array $childrenMap, int $parentId, int $level): array
     {
@@ -69,6 +71,7 @@ class Tree
      * 设置子节点和 leaf 属性
      * @param array $item      当前节点引用
      * @param array $childTree 子节点树
+     * @author siushin<siushin@163.com>
      */
     private function setChildrenAndLeaf(array &$item, array $childTree): void
     {
