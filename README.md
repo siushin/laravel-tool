@@ -1,12 +1,12 @@
 # laravel-tool - Laravel 常用工具集
 
-👤 作者：<https://github.com/siushin>
-
-💻 个人博客：<http://www.siushin.com>
-
-📮 邮箱：<a href="mailto:siushin@163.com">siushin@163.com</a>
-
 基于 Laravel 的枚举、助手函数、Trait特征、工具类、模型转换等常用工具类及助手函数。
+
+## 开始使用
+
+```shell
+composer require siushin/laravel-tool
+```
 
 ## 目录结构
 
@@ -33,6 +33,16 @@ src  源代码目录
 │  └─Tree.php                         生成Tree树结构
 ├─Installer.php        composer命令钩子
 ```
+
+## 🧑🏻‍💻 关于作者
+
+十年开发经验，具有丰富的前、后端软件开发经验~
+
+👤 作者：<https://github.com/siushin>
+
+💻 个人博客：<http://www.siushin.com>
+
+📮 邮箱：<a href="mailto:siushin@163.com">siushin@163.com</a>
 
 ## 💡 反馈交流
 
