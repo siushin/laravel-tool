@@ -10,8 +10,6 @@ use Illuminate\Support\Str;
 
 /**
  * 工具类：模型常用方法
- * @method Builder query()
- * @method getTable()
  */
 trait ModelTool
 {
@@ -174,7 +172,17 @@ trait ModelTool
                 $model = $model->orderBy($field, $sort);
             }
         }
-        return $model->get($fields);
+
+        // 将$fields参数统一转换成一维数组，支持字符串逗号分隔和数组格式
+        $fields = is_string($fields)
+            ? array_filter(
+                preg_split('/[\s,]+/', trim($fields), -1, PREG_SPLIT_NO_EMPTY),
+                fn($field) => $field !== ''
+            )
+            : $fields;
+        $fields = array_unique(array_map('trim', $fields)); // 去除每个字段两边的空格、去除重复字段
+
+        return $model->select(...$fields);
     }
 
     /**
