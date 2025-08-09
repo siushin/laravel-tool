@@ -12,6 +12,7 @@ enum SysLogAction: string
     case insert       = '新增数据';
     case update       = '更新数据';
     case delete       = '删除数据';
+    case batchDelete  = '批量删除数据';
     case export_excel = '导出Excel';
     case export_pdf   = '导出PDF';
     case export_csv   = '导出CSV';
