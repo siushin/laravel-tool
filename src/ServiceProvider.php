@@ -21,7 +21,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         // 发布配置文件（可选）
         $this->publishes([
-            __DIR__ . '/../config/laravel-tool.php' => config_path('laravel-tool.php'),
+            __DIR__ . '/config/laravel-tool.php' => config_path('laravel-tool.php'),
         ], 'config');
     }
 }
