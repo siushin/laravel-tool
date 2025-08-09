@@ -11,10 +11,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        // 绑定工具类（可选）
-        $this->app->singleton('laravel-tool', function () {
-            // return new \Siushin\LaravelTool\ToolClass();
-        });
+        //
     }
 
     /**
@@ -26,13 +23,5 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__ . '/../config/laravel-tool.php' => config_path('laravel-tool.php'),
         ], 'config');
-
-        // 注册命令（可选）
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                // 添加其他命令
-                // \Siushin\LaravelTool\Console\Commands\YourCommand::class,
-            ]);
-        }
     }
 }
