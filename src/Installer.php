@@ -24,6 +24,7 @@ class Installer
     /**
      * 从 composer.json 获取版本号
      * @return string
+     * @author siushin<siushin@163.com>
      */
     private static function detectVersion(): string
     {
