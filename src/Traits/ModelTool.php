@@ -223,7 +223,7 @@ trait ModelTool
     {
         $model = self::baseFastParamHandle($model, $params, $where_mapping, $fields, $where);
         // dd($model->toRawSql());
-        return $model->toArray();
+        return $model->get()->toArray();
     }
 
     /**
