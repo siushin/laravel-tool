@@ -1,6 +1,6 @@
 <?php
 
-use Siushin\LaravelTool\Installer;
+use Siushin\Util\Installer;
 
 require_once __DIR__ . '/Loader.php';
 

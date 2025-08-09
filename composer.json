@@ -36,13 +36,14 @@
     "prefer-stable": true,
     "scripts": {
         "post-install-cmd": [
-            "Siushin\\LaravelTool\\Installer::postInstall"
+            "Siushin\\Util\\Installer::postInstall"
         ],
         "post-update-cmd": [
-            "Siushin\\LaravelTool\\Installer::postInstall"
+            "Siushin\\Util\\Installer::postInstall"
         ]
     },
     "extra": {
+        "package-name": "siushin/laravel-tool",
         "laravel": {
             "providers": [
                 "Siushin\\LaravelTool\\ServiceProvider"
