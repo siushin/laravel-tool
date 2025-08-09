@@ -32,6 +32,7 @@ src  源代码目录
 ├─Utils                工具类目录
 │  └─Tree.php                         生成Tree树结构
 ├─Installer.php        composer命令钩子
+├─ServiceProvider.php  服务提供者
 ```
 
 ## 🧑🏻‍💻 关于作者

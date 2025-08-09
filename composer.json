@@ -1,5 +1,6 @@
 {
     "name": "siushin/laravel-tool",
+    "version": "1.0.0",
     "description": "LaravelTool 基于 Laravel 的枚举、助手函数、Trait特征、工具类、模型转换等常用工具类及助手函数。",
     "type": "library",
     "keywords": [
@@ -41,5 +42,12 @@
         "post-update-cmd": [
             "Siushin\\LaravelTool\\Installer::postInstall"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Siushin\\LaravelTool\\ServiceProvider"
+            ]
+        }
     }
 }
