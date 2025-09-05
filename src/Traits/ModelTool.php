@@ -77,10 +77,14 @@ trait ModelTool
         if (isset($params['without_sort'])) {
             $sortbys = [];
         } else {
-            $sortbys = ['created_at' => 'desc'];
             if (!empty($params['sortbys'])) {
                 $sortbys = self::getQueryParam($params, 'sortbys', [], '@');
                 $sortbys = collect($sortbys)->filter(fn($value) => in_array($value, ['desc', 'asc']))->toArray();
+            } else {
+                $_this = new static;
+                $pk = $_this->getKeyName();
+                $fields = self::getTableFields();
+                $sortbys = [in_array('created_at', $fields) ? 'created_at' : $pk => 'desc'];
             }
         }
         $keyword = $params['keyword'] ?? null;
