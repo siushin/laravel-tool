@@ -81,10 +81,14 @@ trait ModelTool
                 $sortbys = self::getQueryParam($params, 'sortbys', [], '@');
                 $sortbys = collect($sortbys)->filter(fn($value) => in_array($value, ['desc', 'asc']))->toArray();
             } else {
+                $sortbys = [];
                 $_this = new static;
-                $pk = $_this->getKeyName();
+
                 $fields = self::getTableFields();
-                $sortbys = [in_array('created_at', $fields) ? 'created_at' : $pk => 'desc'];
+                in_array('created_at', $fields) && $sortbys['created_at'] = 'desc';
+
+                $pk = $_this->getKeyName();
+                $pk && $sortbys[$pk] = 'desc';
             }
         }
         $keyword = $params['keyword'] ?? null;
