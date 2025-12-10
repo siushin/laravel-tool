@@ -291,10 +291,10 @@ trait ModelTool
      */
     public static function handleDefaultValueRegionData(array &$params): void
     {
-        $params['province'] = (int)$params['province'] ?? 0;
-        $params['city'] = (int)$params['city'] ?? 0;
-        $params['area'] = (int)$params['area'] ?? 0;
-        $params['town'] = (int)$params['town'] ?? 0;
+        $params['province'] = (int)($params['province'] ?? 0);
+        $params['city'] = (int)($params['city'] ?? 0);
+        $params['area'] = (int)($params['area'] ?? 0);
+        $params['town'] = (int)($params['town'] ?? 0);
     }
 
     /**

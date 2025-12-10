@@ -12,8 +12,13 @@
  */
 function currentUserId(int $defaultUserId = 0): int
 {
-    $user = request()->user() ?? [];
-    return $user['id'] ??= $defaultUserId;
+    $user = request()->user();
+    if (is_array($user)) {
+        return $user['id'] ?? $defaultUserId;
+    } elseif (is_object($user) && isset($user->id)) {
+        return (int)$user->id;
+    }
+    return $defaultUserId;
 }
 
 /**

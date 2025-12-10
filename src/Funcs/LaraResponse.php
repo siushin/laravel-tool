@@ -32,9 +32,13 @@ function success(array $data = [], string $message = 'success', int $code = 0): 
 function throw_exception(string $message = 'fail', int $error_code = null, int $code = null): Exception
 {
     $is_json_data = json_decode($message, true);
-    $message = $is_json_data['message'] ?? $message;
-    $error_code && $message .= "，错误码：$error_code";
-    $status_code = $code = $code ?: 401;
+    if (is_array($is_json_data) && isset($is_json_data['message'])) {
+        $message = $is_json_data['message'];
+    }
+    if ($error_code !== null) {
+        $message .= "，错误码：$error_code";
+    }
+    $status_code = $code ?? 401;
     $data = json_encode(compact('code', 'message'), JSON_UNESCAPED_UNICODE);
     throw new Exception($data, $status_code);
 }

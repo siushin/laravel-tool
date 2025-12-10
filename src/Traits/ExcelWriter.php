@@ -69,7 +69,7 @@ trait ExcelWriter
                     ],
                 ],
             ];
-            $activeWorksheet->getStyle($column)->applyFromArray($styleArray);;
+            $activeWorksheet->getStyle($column)->applyFromArray($styleArray);
         }
 
         // 设置字体颜色
