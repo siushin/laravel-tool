@@ -5,7 +5,7 @@ namespace Siushin\LaravelTool\Enums;
 /**
  * 枚举：请求来源
  */
-enum SysRequestSource: string
+enum RequestSourceEnum: string
 {
     // Web端
     case web = 'Web端';                    // PC浏览器

@@ -19,10 +19,11 @@ src  源代码目录
 ├─Cases                模型转换目录
 │  └─Json.php                         事件定义文件
 ├─Enums                枚举目录
-│  ├─SysGenderType.php                性别
-│  ├─SysLogAction.php                 操作类型（日志）
-│  ├─SysUploadFileType.php            上传文件类型
-│  └─SysRequestSource.php             请求来源
+│  ├─GenderTypeEnum.php               性别
+│  ├─LogActionEnum.php                操作类型（日志）
+│  ├─UploadFileTypeEnum.php           上传文件类型
+│  ├─RequestSourceEnum.php            请求来源
+│  └─SocialTypeEnum.php               社交类型
 ├─Funcs                助手函数目录
 │  ├─LaraDateTime.php                 日期时间（基于Laravel）
 │  ├─LaraRequest.php                  Request请求（基于Laravel）

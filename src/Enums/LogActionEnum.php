@@ -5,7 +5,7 @@ namespace Siushin\LaravelTool\Enums;
 /**
  * 枚举：操作类型（日志）
  */
-enum SysLogAction: string
+enum LogActionEnum: string
 {
     case login        = '登录';
     case fail_login   = '登录失败';

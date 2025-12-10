@@ -5,7 +5,7 @@ namespace Siushin\LaravelTool\Enums;
 /**
  * 枚举：上传文件类型
  */
-enum SysUploadFileType: string
+enum UploadFileTypeEnum: string
 {
     // 图片
     case JPG  = 'jpg';
