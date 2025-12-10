@@ -22,7 +22,7 @@ src  源代码目录
 │  ├─SysGenderType.php                性别
 │  ├─SysLogAction.php                 操作类型（日志）
 │  ├─SysUploadFileType.php            上传文件类型
-│  └─SysUserType.php                  用户类型
+│  └─SysRequestSource.php             请求来源
 ├─Funcs                助手函数目录
 │  ├─LaraDateTime.php                 日期时间（基于Laravel）
 │  ├─LaraRequest.php                  Request请求（基于Laravel）
