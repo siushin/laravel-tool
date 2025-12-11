@@ -14,7 +14,7 @@ use Illuminate\Http\JsonResponse;
  * @return JsonResponse
  * @author siushin<siushin@163.com>
  */
-function success(array $data = [], string $message = 'success', int $code = 0): JsonResponse
+function success(array $data = [], string $message = 'success', int $code = 200): JsonResponse
 {
     $data = compact('code', 'message', 'data');
     return response()->json($data);
