@@ -19,4 +19,7 @@ enum LogActionEnum: string
     case export_txt   = '导出TXT';
     case export_zip   = '导出ZIP';
     case upload_file  = '上传文件';
+    case push_message = '推送消息';
+    case send_sms     = '发送短信';
+    case send_email   = '发送邮件';
 }
