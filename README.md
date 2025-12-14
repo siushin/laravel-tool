@@ -20,7 +20,6 @@ src  源代码目录
 │  └─Json.php                         事件定义文件
 ├─Enums                枚举目录
 │  ├─GenderTypeEnum.php               性别
-│  ├─LogActionEnum.php                操作类型（日志）
 │  ├─UploadFileTypeEnum.php           上传文件类型
 │  ├─RequestSourceEnum.php            请求来源
 │  └─SocialTypeEnum.php               社交类型
