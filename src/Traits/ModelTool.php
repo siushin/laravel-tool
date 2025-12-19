@@ -120,8 +120,17 @@ trait ModelTool
                 Str::substrCount($keyword_field, '|') == 0 && $where[] = [$val, 'like', "%$field_data%"];
             } else if ($field == 'date_range') {
                 list('date_range' => $date_range) = self::buildQueryReqOfPageData($params);
-                $where[] = [$val, '>=', $date_range[0]];
-                $where[] = [$val, '<=', $date_range[1]];
+                $startDate = $date_range[0];
+                $endDate = $date_range[1];
+                
+                // 如果开始日期和结束日期相同，将结束日期设置为当天的 23:59:59
+                if ($startDate === $endDate) {
+                    $endDate = Carbon::parse($endDate)->endOfDay()->format('Y-m-d H:i:s');
+                    $startDate = Carbon::parse($startDate)->startOfDay()->format('Y-m-d H:i:s');
+                }
+                
+                $where[] = [$val, '>=', $startDate];
+                $where[] = [$val, '<=', $endDate];
             } else if ($field == 'time_range') {
                 list('time_range' => $time_range) = self::buildQueryReqOfPageData($params);
                 $where[] = [$val, '>=', $time_range[0]];
