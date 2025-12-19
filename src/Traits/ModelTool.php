@@ -92,10 +92,32 @@ trait ModelTool
             }
         }
         $keyword = $params['keyword'] ?? null;
-        $date_range = $params['date_range'] ?? '';
-        $date_range && $date_range = explode(',', $date_range);
-        $time_range = $params['time_range'] ?? '';
-        $time_range && $time_range = explode(',', $time_range);
+
+        // 公共方法：处理范围参数（兼容字符串逗号拼接和一维数组）
+        $parseRange = function ($value) {
+            if (!$value) {
+                return [];
+            }
+            if (is_array($value)) {
+                // 如果是一维数组，直接使用
+                $value = array_values($value);
+            } else {
+                // 如果是字符串，按逗号分割
+                $value = explode(',', $value);
+            }
+            // 确保数组有至少两个元素，如果只有一个则复制
+            if (count($value) === 1) {
+                $value[] = $value[0];
+            }
+            // 去除空白字符
+            return array_map('trim', $value);
+        };
+
+        // 处理 date_range：兼容字符串逗号拼接和一维数组
+        $date_range = $parseRange($params['date_range'] ?? '');
+        // 处理 time_range：兼容字符串逗号拼接和一维数组
+        $time_range = $parseRange($params['time_range'] ?? '');
+
         return compact('page', 'pageSize', 'sortbys', 'keyword', 'date_range', 'time_range');
     }
 
@@ -120,19 +142,27 @@ trait ModelTool
                 Str::substrCount($keyword_field, '|') == 0 && $where[] = [$val, 'like', "%$field_data%"];
             } else if ($field == 'date_range') {
                 list('date_range' => $date_range) = self::buildQueryReqOfPageData($params);
+                // 如果 date_range 为空数组，跳过处理
+                if (empty($date_range) || count($date_range) < 2) {
+                    continue;
+                }
                 $startDate = $date_range[0];
                 $endDate = $date_range[1];
-                
+
                 // 如果开始日期和结束日期相同，将结束日期设置为当天的 23:59:59
                 if ($startDate === $endDate) {
                     $endDate = Carbon::parse($endDate)->endOfDay()->format('Y-m-d H:i:s');
                     $startDate = Carbon::parse($startDate)->startOfDay()->format('Y-m-d H:i:s');
                 }
-                
+
                 $where[] = [$val, '>=', $startDate];
                 $where[] = [$val, '<=', $endDate];
             } else if ($field == 'time_range') {
                 list('time_range' => $time_range) = self::buildQueryReqOfPageData($params);
+                // 如果 time_range 为空数组，跳过处理
+                if (empty($time_range) || count($time_range) < 2) {
+                    continue;
+                }
                 $where[] = [$val, '>=', $time_range[0]];
                 $where[] = [$val, '<=', $time_range[1]];
             } else {
