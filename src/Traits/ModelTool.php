@@ -161,9 +161,22 @@ trait ModelTool
 
         // 单一关键字 多字段 like 筛选
         $keyword_field = self::getQueryParam($where_mapping, 'keyword', '');
-        if (Str::substrCount($keyword_field, '|') > 0) {
-            $keyword = self::getQueryParam($params, 'keyword');
-            $where_likes = explode('|', $where_mapping['keyword']);
+        $keyword = self::getQueryParam($params, 'keyword');
+
+        // 如果 keyword_field 是数组，作为整体使用 whereOr
+        if (is_array($keyword_field) && !empty($keyword_field) && $keyword) {
+            $model = $model->where(function (Builder $query) use ($keyword_field, $keyword) {
+                foreach ($keyword_field as $index => $like_field) {
+                    $query->when($index == 0, function (Builder $query) use ($like_field, $keyword) {
+                        $query->where($like_field, 'like', "%$keyword%");
+                    }, function (Builder $query) use ($like_field, $keyword) {
+                        $query->orWhere($like_field, 'like', "%$keyword%");
+                    });
+                }
+            });
+        } // 如果 keyword_field 是字符串且包含 |，用 | 分割
+        elseif (is_string($keyword_field) && Str::substrCount($keyword_field, '|') > 0 && $keyword) {
+            $where_likes = explode('|', $keyword_field);
             $model = $model->where(function (Builder $query) use ($where_likes, $keyword) {
                 foreach ($where_likes as $index => $like_field) {
                     $query->when($index == 0, function (Builder $query) use ($like_field, $keyword) {
