@@ -10,6 +10,9 @@ use Illuminate\Support\Str;
 
 /**
  * 工具类：模型常用方法
+ * @method query()
+ * @method getTable()
+ * @method getKeyName()
  */
 trait ModelTool
 {
@@ -139,7 +142,11 @@ trait ModelTool
             if ($field == 'keyword') {
                 // 只处理 单个字段 筛选（单一关键字 多字段 like 筛选 留给后面复杂模型组合筛选）
                 $keyword_field = self::getQueryParam($where_mapping, 'keyword', '');
-                Str::substrCount($keyword_field, '|') == 0 && $where[] = [$val, 'like', "%$field_data%"];
+                // 只有当 keyword_field 是字符串且不包含 | 时，才在 where 中添加单个字段的 like 条件
+                // 如果是数组或包含 | 的字符串，会在 baseFastParamHandle 中处理
+                if (is_string($keyword_field) && Str::substrCount($keyword_field, '|') == 0) {
+                    $where[] = [$val, 'like', "%$field_data%"];
+                }
             } else if ($field == 'date_range') {
                 list('date_range' => $date_range) = self::buildQueryReqOfPageData($params);
                 // 如果 date_range 为空数组，跳过处理
