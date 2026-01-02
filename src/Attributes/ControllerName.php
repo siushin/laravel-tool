@@ -5,7 +5,7 @@ namespace Siushin\LaravelTool\Attributes;
 use Attribute;
 
 /**
- * 控制器名称属性
+ * 属性：控制器名称
  * 用于在控制器类上标记控制器名称，便于IDE解析和代码管理
  *
  * 使用示例：
