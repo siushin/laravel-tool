@@ -3,6 +3,7 @@
 namespace Siushin\LaravelTool\Attributes;
 
 use Attribute;
+use BackedEnum;
 
 /**
  * 属性：操作类型
@@ -16,7 +17,7 @@ use Attribute;
 class OperationAction
 {
     public function __construct(
-        public string $action
+        public BackedEnum $action
     )
     {
     }
