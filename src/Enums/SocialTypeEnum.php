@@ -7,7 +7,7 @@ namespace Siushin\LaravelTool\Enums;
  */
 enum SocialTypeEnum: string
 {
-    case Mobile  = 'mobile';    // 手机号
+    case Phone   = 'phone';     // 手机号
     case Email   = 'email';     // 邮箱
     case Wechat  = 'wechat';    // 微信
     case Weibo   = 'weibo';     // 微博
