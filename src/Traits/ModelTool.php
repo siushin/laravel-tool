@@ -74,7 +74,7 @@ trait ModelTool
      */
     public static function buildQueryReqOfPageData(array $params = []): array
     {
-        $page = $params['page'] ?? 1;
+        $page = $params['page'] ?? $params['current'] ?? 1;
         $pageSize = $params['pageSize'] ?? 10;
         // 排序，默认created_at
         if (isset($params['without_sort'])) {
